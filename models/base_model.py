@@ -4,9 +4,10 @@ import uuid
 from datetime import datetime
 import models
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, DateTime,String, Integer
+from sqlalchemy import Column, DateTime, String, Integer
 
 Base = declarative_base()
+
 
 class BaseModel:
     """A base class for all hbnb models"""
@@ -21,7 +22,7 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
         else:
-            for k,v in kwargs.items():
+            for k, v in kwargs.items():
                 if k == "created_at" or k == "updated_at":
                     v = datetime.strptime(v, "%Y-%m-%dT%H:%M:%S.%f")
                 if k != "__class__":
